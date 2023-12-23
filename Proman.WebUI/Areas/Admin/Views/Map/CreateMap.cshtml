@@ -1,0 +1,19 @@
+﻿@model CreateMapDTO 
+
+@{
+    ViewData["Title"] = "CreateMap";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Yeni Lokasyon Bilgisi Girişi</h1>
+<br />
+<form method="post">
+    <label>Lokasyon URL</label>
+    <input type="text" asp-for="MapURL" class="form-control" placeholder="Lokasyon URL" required />
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-primary"><i class="fas fa-save"></i> Lokasyon Bilgisi Ekle</button>
+</form>

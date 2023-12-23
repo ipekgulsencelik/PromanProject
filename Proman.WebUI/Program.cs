@@ -1,7 +1,24 @@
+using Microsoft.Extensions.Options;
+using Proman.DataAccessLayer.Abstract;
+using Proman.DataAccessLayer.Concrete;
+using Proman.DataAccessLayer.Settings.Abstract;
+using Proman.DataAccessLayer.Settings.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+
+builder.Services.AddSingleton<IDatabaseSettings>(sp =>
+{
+    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+});
+
+builder.Services.AddScoped<IMapDAL, MapDAL>();
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -23,5 +40,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

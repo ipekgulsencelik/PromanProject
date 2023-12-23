@@ -1,0 +1,28 @@
+﻿@model UpdateContactDTO
+
+@{
+    ViewData["Title"] = "UpdateContact";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>İletişim Bilgisi Güncelleme</h1>
+<br />
+<form method="post">
+    <label>ID</label>
+    <input type="text" asp-for="ID" disabled />
+    <br />
+    <label>Adres</label>
+    <textarea asp-for="Address" rows="5" class="form-control" placeholder="Adres..." required></textarea>
+    <br />
+    <label>Telefon</label>
+    <input type="text" asp-for="Phone" class="form-control" id="floatingInput" placeholder="Telefon Numarası..." required />
+    <br />
+    <label>Mail</label>
+    <input type="email" asp-for="Email" class="form-control" id="floatingInput" placeholder="Mail Adresi..." required />
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-success"><i class="fas fa-save"></i> İletişim Bilgisi Güncelle</button>
+</form>

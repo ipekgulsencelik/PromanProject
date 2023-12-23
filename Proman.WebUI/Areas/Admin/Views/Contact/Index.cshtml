@@ -1,0 +1,122 @@
+﻿@model List<ResultContactDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+	int count = 0;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class="container">
+	<h3>İletişim Bilgileri İşlemleri</h3>
+	<br />
+	@if (Model.Count() > 0)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>ID</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th>Mail</th>
+				<th>Durum</th>
+				<th>Sil</th>
+				<th>Güncelle</th>
+			</tr>
+				@foreach (var item in Model)
+				{
+					count++;
+					<tr>
+						<td>@count</td>
+						<td>@item.ID</td>
+						@if (@item.Address == null || @item.Address.Length <= 30)
+						{
+							<td>@item.Address</td>
+						}
+						else
+						{
+							<td>
+								<a href="#" id="AddressBtn"
+							   onclick="return addressContact('@item.Address', '@item.ID')">@item.Address.Substring(0, 10)...</a>
+							</td>
+						}
+						<td>@item.Phone</td>
+						<td>@item.Email</td>
+						<td>
+							@{
+								if (item.Status == true)
+								{
+									<a href="#" onclick="return updateStatus('@item.ID')" class="btn btn-success">Aktif</a>
+								}
+								else
+								{
+								<a href="#" onclick="return updateStatus('@item.ID')" class="btn btn-danger">Pasif</a>
+								}
+							}
+						</td>
+						<td><a href="#" onclick="return deleteContact('@item.ID')" class="btn btn-outline-danger">Sil</a></td>
+						<td><a href="/Admin/Contact/UpdateContact/@item.ID" class="btn btn-outline-success"><i class="fas fa-pen"></i> Güncelle</a></td>
+					</tr>
+				}
+		</table>
+	}
+	else
+	{
+		<p>Kayıtlı Herhangi Bir İletişim Bilgisi Verisi Bulunmamaktatir.</p>
+	}
+	<a href="/Admin/Contact/CreateContact/" class="btn btn-outline-primary"><i class="fas fa-plus-circle"></i> Yeni İletişim Bilgisi Girişi</a>
+</div>
+
+<script>
+	function addressContact(address, id) {
+		Swal.fire({
+			title: 'Adres',
+			text: address,
+			icon: 'success',
+			showCancelButton: true,
+			confirmButtonText: 'Güncelle',
+			cancelButtonText: 'Tamam'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "/Admin/Contact/UpdateContact?id=" + id;
+			}
+		});
+	}
+</script>
+
+<script>
+	function deleteContact(id) {
+		Swal.fire({
+			title: 'Silmek istediğinize emin misiniz?',
+			text: 'Bu öğeyi silerseniz geri alamazsınız!',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Sil',
+			cancelButtonText: 'İptal'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "/Admin/Contact/DeleteContact?id=" + id;
+			}
+		});
+	}
+</script>
+
+<script>
+	function updateStatus(id) {
+		Swal.fire({
+			title: 'Durum',
+			text: 'Durumu değiştirmek istediğinizden emin misiniz?',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Değiştir',
+			cancelButtonText: 'İptal'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "/Admin/Contact/ChangeContactStatus?id=" + id;
+			}
+		});
+	}
+</script>

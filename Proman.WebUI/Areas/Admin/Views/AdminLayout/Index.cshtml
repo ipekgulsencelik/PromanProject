@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+@await Html.PartialAsync("_HeaderPartial.cshtml", "AdminLayout")
+
+<body>
+
+	<div class="wrapper d-flex align-items-stretch">
+		
+		@await Html.PartialAsync("_SidebarPartial.cshtml", "AdminLayout")
+
+		<!-- Page Content  -->
+		<div id="content" class="p-4 p-md-5 pt-5">
+
+			@RenderBody()
+
+		</div>
+	</div>
+
+	@await Html.PartialAsync("_ScriptPartial.cshtml", "AdminLayout")
+
+</body>
+</html>

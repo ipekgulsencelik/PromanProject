@@ -1,0 +1,22 @@
+﻿@model UpdateMapDTO
+
+@{
+    ViewData["Title"] = "UpdateMap";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Lokasyon Bilgisi Güncelleme</h1>
+<br />
+<form method="post">
+    <label>ID</label>
+    <input type="text" asp-for="ID" disabled />
+    <br />
+    <label>Lokasyon URL</label>
+    <input type="text" asp-for="MapURL" class="form-control" placeholder="Lokasyon URL" required />
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-success"><i class="fas fa-save"></i> Konum Bilgisi Güncelle</button>
+</form>
