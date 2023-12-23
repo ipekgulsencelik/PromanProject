@@ -14,8 +14,6 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
     return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
 });
 
-builder.Services.AddScoped<IMapDAL, MapDAL>();
-
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient();

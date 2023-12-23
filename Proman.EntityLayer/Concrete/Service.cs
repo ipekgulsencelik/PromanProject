@@ -7,6 +7,7 @@ namespace Proman.EntityLayer.Concrete
     {
         public string? ServiceTitle { get; set; }
         public string? ServiceDescription { get; set; }
+        public string? ServiceIcon { get; set; }
 
         [BsonRepresentation(MongoDB.Bson.BsonType.Decimal128)]
         public decimal ServicePrice { get; set; }

@@ -2,6 +2,7 @@
 using Proman.DTO.DTOs.ContactDTOs;
 using Proman.DTO.DTOs.MapDTOs;
 using Proman.DTO.DTOs.MessageDTOs;
+using Proman.DTO.DTOs.ServiceDTOs;
 using Proman.EntityLayer.Concrete;
 
 namespace Proman.WebAPI.Mappings
@@ -18,6 +19,9 @@ namespace Proman.WebAPI.Mappings
 
             CreateMap<CreateMessageDTO, Message>().ReverseMap();
             CreateMap<UpdateMessageDTO, Message>().ReverseMap();
+
+            CreateMap<CreateServiceDTO, Service>().ReverseMap();
+            CreateMap<UpdateServiceDTO, Service>().ReverseMap();
         }
     }
 }

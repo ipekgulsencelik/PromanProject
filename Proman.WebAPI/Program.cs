@@ -17,6 +17,7 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 builder.Services.AddScoped<IContactDAL, ContactDAL>();
 builder.Services.AddScoped<IMapDAL, MapDAL>();
 builder.Services.AddScoped<IMessageDAL, MessageDAL>();
+builder.Services.AddScoped<IServiceDAL, ServiceDAL>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(options =>
