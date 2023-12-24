@@ -7,6 +7,6 @@ namespace Proman.DataAccessLayer.Abstract
     {
         void ChangeSocialMediaStatus(string id);
         void ChangeHomeStatus(string id);
-        List<SocialMedia> GetLast4ActiveSocialMedia();
+        List<SocialMedia> GetLast4ActiveSocialMedias();
     }
 }

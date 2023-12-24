@@ -6,18 +6,18 @@ using Proman.EntityLayer.Concrete;
 
 namespace Proman.DataAccessLayer.Concrete
 {
-    public class TestimonialDAL : MongoGenericRepository<Testimonial>, ITestimonialDAL
+    public class SkillDAL : MongoGenericRepository<Skill>, ISkillDAL
     {
-        private readonly IMongoCollection<Testimonial> _collection;
+        private readonly IMongoCollection<Skill> _collection;
 
-        public TestimonialDAL(IDatabaseSettings databaseSettings) : base(databaseSettings)
+        public SkillDAL(IDatabaseSettings databaseSettings) : base(databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatabaseName);
-            _collection = database.GetCollection<Testimonial>(typeof(Testimonial).Name.ToLowerInvariant());
+            _collection = database.GetCollection<Skill>(typeof(Skill).Name.ToLowerInvariant());
         }
 
-        public void ChangeTestimonialStatus(string id)
+        public void ChangeSkillStatus(string id)
         {
             var value = _collection.Find(x => x.ID == id).FirstOrDefault();
             if (value.Status == true)
@@ -45,22 +45,22 @@ namespace Proman.DataAccessLayer.Concrete
             _collection.FindOneAndReplace(x => x.ID == value.ID, value);
         }
 
-        public List<Testimonial> GetActiveTestimonials()
+        public List<Skill> GetActiveSkills()
         {
             return _collection.Find(x => x.Status == true).SortByDescending(x => x.CreatedAt).ToList();
         }
 
-        public List<Testimonial> GetLast3ActiveTestimonials()
+        public List<Skill> GetLast6ActiveSkills()
         {
-            var testimonialCount = _collection.Find(x => x.Status == true && x.IsHome == true).SortByDescending(x => x.CreatedAt).Count();
+            var skillCount = _collection.Find(x => x.Status == true && x.IsHome == true).SortByDescending(x => x.CreatedAt).Count();
             var values = _collection.Find(x => x.Status == true && x.IsHome == true).SortByDescending(x => x.CreatedAt).ToList();
-            if (testimonialCount <= 3)
+            if (skillCount <= 6)
             {
                 values = _collection.Find(x => x.Status == true && x.IsHome == true).SortByDescending(x => x.CreatedAt).ToList();
             }
             else
             {
-                values = _collection.Find(x => x.Status == true && x.IsHome == true).SortByDescending(x => x.CreatedAt).Limit(3).ToList();
+                values = _collection.Find(x => x.Status == true && x.IsHome == true).SortByDescending(x => x.CreatedAt).Limit(6).ToList();
             }
             return values;
         }

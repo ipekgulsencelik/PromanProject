@@ -15,9 +15,15 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 });
 
 builder.Services.AddScoped<IContactDAL, ContactDAL>();
+builder.Services.AddScoped<IEducationDAL, EducationDAL>();
+builder.Services.AddScoped<IExperienceDAL, ExperienceDAL>();
 builder.Services.AddScoped<IMapDAL, MapDAL>();
 builder.Services.AddScoped<IMessageDAL, MessageDAL>();
 builder.Services.AddScoped<IServiceDAL, ServiceDAL>();
+builder.Services.AddScoped<ISkillDAL, SkillDAL>();
+builder.Services.AddScoped<ISocialMediaDAL, SocialMediaDAL>();
+builder.Services.AddScoped<ITeamDAL, TeamDAL>();
+builder.Services.AddScoped<ITestimonialDAL, TestimonialDAL>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(options =>

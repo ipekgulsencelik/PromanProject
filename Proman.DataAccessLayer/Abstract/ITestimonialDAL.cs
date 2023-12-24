@@ -5,9 +5,9 @@ namespace Proman.DataAccessLayer.Abstract
 {
     public interface ITestimonialDAL : IMongoGenericRepository<Testimonial>
     {
-        void ChangeTeamStatus(int id);
-        void ChangeHomeStatus(int id);
-        List<Testimonial> GetLast3Teams();
-        List<Testimonial> GetActiveTeams();
+        void ChangeTestimonialStatus(string id);
+        void ChangeHomeStatus(string id);
+        List<Testimonial> GetLast3ActiveTestimonials();
+        List<Testimonial> GetActiveTestimonials();
     }
 }
