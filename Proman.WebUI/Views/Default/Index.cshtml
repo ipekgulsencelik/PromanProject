@@ -225,6 +225,7 @@
                             </div>
                         </div>
                     </div>
+                    @await Component.InvokeAsync("_DefaultEducationListComponentPartial")
                 </div>
             </div>
         </div>
@@ -437,13 +438,8 @@
         <div class="row g-5">
             <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 @await Component.InvokeAsync("_DefaultContactComponentPartial")
-                <p class="mb-2">Follow me:</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                </div>
+
+                @await Component.InvokeAsync("_DefaultSocialMediaComponentPartial")
             </div>
             <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
@@ -457,4 +453,3 @@
 <!-- Map Start -->
 @await Component.InvokeAsync("_DefaultMapComponentPartial")
 <!-- Map End -->
-

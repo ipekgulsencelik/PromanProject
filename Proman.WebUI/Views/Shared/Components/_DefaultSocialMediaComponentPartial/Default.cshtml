@@ -1,0 +1,9 @@
+﻿@model List<ResultSocialMediaDTO>
+
+<p class="mb-2">Follow me:</p>
+<div class="d-flex pt-2">
+    @foreach (var item in Model)
+    {
+        <a class="btn btn-square btn-primary me-2" href="@item.SocialMediaURL"><i class="fab @item.SocialMediaIcon"></i></a>
+    }
+</div>

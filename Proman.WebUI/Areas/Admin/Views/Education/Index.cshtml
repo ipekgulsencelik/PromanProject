@@ -1,0 +1,126 @@
+﻿@model List<ResultEducationDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+	int count = 0;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="container">
+	<h3>Eğitim Bilgileri İşlemleri</h3>
+	<br />
+	@if (Model.Count() > 0)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>ID</th>
+				<th>Eğitim</th>
+				<th>Kurum</th>
+				<th>Başlangıç Tarihi</th>
+				<th>Bitiş Tarihi</th>
+				<th>Ana Sayfa</th>
+				<th>Durum</th>
+				<th>Sil</th>
+				<th>Güncelle</th>
+			</tr>
+			@foreach (var item in Model)
+			{
+				count++;
+				<tr>
+					<td>@count</td>
+					<td>@item.ID</td>
+					<td> @item.EducationName</td>
+					<td>@item.SchoolName</td>
+					<td>@item.StartedAt.ToString("g")</td>
+					<td>@item.FinishedAt.ToString("g")</td>
+					<td>
+						@{
+							if (item.IsHome == true)
+							{
+								<a href="#" onclick="return updateHomeStatus('@item.ID')" class="btn btn-success">Ekle</a>
+							}
+							else
+							{
+								<a href="#" onclick="return updateHomeStatus('@item.ID')" class="btn btn-danger">Çıkar</a>
+							}
+						}
+					</td>
+					<td>
+						@{
+							if (item.Status == true)
+							{
+								<a href="#" onclick="return updateStatus('@item.ID')" class="btn btn-success">Aktif</a>
+							}
+							else
+							{
+								<a href="#" onclick="return updateStatus('@item.ID')" class="btn btn-danger">Pasif</a>
+							}
+						}
+					</td>
+					<td><a href="#" onclick="return deleteEducation('@item.ID')" class="btn btn-outline-danger">Sil</a></td>
+					<td><a href="/Admin/Education/UpdateEducation/@item.ID" class="btn btn-outline-success"><i class="fas fa-pen"></i> Güncelle</a></td>
+				</tr>
+			}
+		</table>
+	}
+	else
+	{
+		<p>Kayıtlı Herhangi Bir Eğitim Bilgisi Verisi Bulunmamaktatır.</p>
+	}
+	<a href="/Admin/Education/CreateEducation/" class="btn btn-outline-primary"><i class="fas fa-plus-circle"></i> Yeni Eğitim Bilgisi Girişi</a>
+</div>
+
+<script>
+	function deleteEducation(id) {
+		Swal.fire({
+			title: 'Silmek istediğinize emin misiniz?',
+			text: 'Bu öğeyi silerseniz geri alamazsınız!',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Sil',
+			cancelButtonText: 'İptal'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "/Admin/Education/DeleteEducation?id=" + id;
+			}
+		});
+	}
+</script>
+
+<script>
+	function updateHomeStatus(id) {
+		Swal.fire({
+			title: 'Ana Sayfa',
+			text: 'Ana Sayfa görünürlüğünü değiştirmek istediğinizden emin misiniz?',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Değiştir',
+			cancelButtonText: 'İptal'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "/Admin/Education/ChangeHomeStatus?id=" + id;
+			}
+		});
+	}
+</script>
+
+<script>
+	function updateStatus(id) {
+		Swal.fire({
+			title: 'Durum',
+			text: 'Durumu değiştirmek istediğinizden emin misiniz?',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Değiştir',
+			cancelButtonText: 'İptal'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "/Admin/Education/ChangeEducationStatus?id=" + id;
+			}
+		});
+	}
+</script>

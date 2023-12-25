@@ -1,0 +1,29 @@
+﻿@model UpdateSocialMediaDTO
+
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Yeni Hesap Girişi</h1>
+<br />
+<form method="post">
+    <label>ID</label>
+    <input type="text" asp-for="ID" disabled class="form-control" />
+    <br />
+    <label>Hesap URL</label>
+    <input type="text" asp-for="SocialMediaURL" class="form-control" id="floatingInput" placeholder="URL..." required />
+    <br />
+    <label>İkon</label>
+    <input type="text" asp-for="SocialMediaIcon" class="form-control" id="floatingInput" placeholder="İkon..." required />
+    <br />
+    <input id="IsHome" asp-for="IsHome" type="checkbox" />
+    <label for="IsHome">Ana Sayfa</label>
+    <br />
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-success"><i class="fas fa-save"></i> Hesap Güncelle</button>
+</form>

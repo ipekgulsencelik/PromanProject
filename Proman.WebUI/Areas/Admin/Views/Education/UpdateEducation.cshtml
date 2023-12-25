@@ -1,0 +1,34 @@
+﻿@model UpdateEducationDTO
+
+@{
+    ViewData["Title"] = "UpdateEducation";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Eğitim Güncelleme</h1>
+<br />
+<form method="post">
+    <label>ID</label>
+    <input type="text" asp-for="ID" class="form-control" disabled />
+    <br />
+    <label>Eğitim</label>
+    <input type="text" asp-for="EducationName" class="form-control" id="floatingInput" placeholder="Eğitim..." required />
+    <br />
+    <label>Kurum Bilgisi</label>
+    <textarea asp-for="SchoolName" rows="5" class="form-control" placeholder="Kurum..." required></textarea>
+    <br />
+    <label>Eğitim Başlangıç Tarihi</label>
+    <input type="date" asp-for="StartedAt" class="form-control" id="floatingInput" required />
+    <br />
+    <label>Eğitim Bitiş Tarihi</label>
+    <input type="date" asp-for="FinishedAt" class="form-control" id="floatingInput" required />
+    <br />
+    <input id="IsHome" asp-for="IsHome" type="checkbox" />
+    <label for="IsHome">Ana Sayfa</label>
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-primary"><i class="fas fa-save"></i> Eğitim Güncelle</button>
+</form>
