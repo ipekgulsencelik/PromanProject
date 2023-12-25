@@ -1,0 +1,39 @@
+﻿@model UpdateSkillDTO
+
+@{
+    ViewData["Title"] = "UpdateSkill";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Yetkinlik Güncelleme</h1>
+<br />
+<form method="post">
+    <label>ID</label>
+    <input type="text" asp-for="ID" disabled class="form-control" />
+    <br />
+    <label>Yetkinlik</label>
+    <input type="text" asp-for="SkillName" class="form-control" id="floatingInput" placeholder="Yetkinlik..." required />
+    <br />
+    <label>Yetkinlik Derecesi (0 ve 100 arasında)</label>
+    <input type="range" asp-for="SkillScore" id="skill_input" class="form-control" id="floatingInput" required min="0" max="100" />
+    <p>Oran: <output id="value"></output></p>
+    <br />
+    <input id="IsHome" asp-for="IsHome" type="checkbox" />
+    <label for="IsHome">Ana Sayfa</label>
+    <br />
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-success"><i class="fas fa-save"></i> Yetkinlik Güncelle</button>
+</form>
+
+<script>
+    const value = document.querySelector("#value");
+    const input = document.querySelector("#skill_input");
+    value.textContent = input.value;
+    input.addEventListener("input", (event) => {
+        value.textContent = event.target.value;
+    });
+</script>

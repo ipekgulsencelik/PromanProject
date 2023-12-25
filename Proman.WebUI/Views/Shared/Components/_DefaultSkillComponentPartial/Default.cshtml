@@ -1,0 +1,98 @@
+﻿@model List<ResultSkillDTO>
+
+<h3 class="mb-4">My Skills</h3>
+<div class="row align-items-center">
+    @if (Model.Count() <= 3)
+    {
+        <div class="col-md-12">
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[0].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[0].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="@Model[0].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[1].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[1].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="@Model[1].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[2].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[2].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="@Model[2].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-md-6">
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[0].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[0].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="@Model[0].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[1].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[1].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="@Model[1].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[2].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[2].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="@Model[2].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[3].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[3].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="@Model[3].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[4].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[4].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="@Model[4].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="skill mb-4">
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-bold">@Model[5].SkillName</h6>
+                    <h6 class="font-weight-bold">@Model[5].SkillScore.ToString()%</h6>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="@Model[5].SkillScore" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    }    
+</div>
