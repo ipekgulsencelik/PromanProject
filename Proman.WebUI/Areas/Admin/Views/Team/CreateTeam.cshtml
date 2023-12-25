@@ -1,0 +1,31 @@
+﻿@model CreateTeamDTO
+
+@{
+    ViewData["Title"] = "CreateTeam";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Yeni Takım Üyesi Girişi</h1>
+<br />
+<form method="post" enctype="multipart/form-data">
+    <label>Takım Üyesi Adı</label>
+    <input type="text" asp-for="TeamFullName" class="form-control" id="floatingInput" placeholder="Ad..." required />
+    <br />
+    <label>Takım Üyesi Ünvanı</label>
+    <input type="text" asp-for="TeamTitle" class="form-control" id="floatingInput" placeholder="Ünvan..." />
+    <br />
+    <label>Takım Üyesi Görseli</label>
+    <br />
+    <input type="file" name="image" />
+    <br />
+    <br />
+    <input id="IsHome" asp-for="IsHome" type="checkbox" />
+    <label for="IsHome">Ana Sayfa</label>
+    <br />
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-primary"><i class="fas fa-save"></i> Takım Üyesi Ekle</button>
+</form>
