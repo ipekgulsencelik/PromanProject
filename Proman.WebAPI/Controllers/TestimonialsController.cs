@@ -56,6 +56,13 @@ namespace Proman.WebAPI.Controllers
             return Ok("Referans Başarılı Bir Şekilde Güncellendi.");
         }
 
+        [HttpGet("GetTestimonialByID/{id}")]
+        public IActionResult GetTestimonialByID(string id)
+        {
+            var value = _testimonialDAL.GetTestimonialByID(id);
+            return Ok(value);
+        }
+
         [HttpGet("GetActiveTestimonials")]
         public IActionResult GetActiveTestimonials()
         {

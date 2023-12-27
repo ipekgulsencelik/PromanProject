@@ -64,5 +64,11 @@ namespace Proman.DataAccessLayer.Concrete
             }
             return values;
         }
+
+        public Testimonial GetTestimonialByID(string id)
+        {
+            var value = _collection.Find(x => x.ID == id).FirstOrDefault();
+            return value;
+        }
     }
 }

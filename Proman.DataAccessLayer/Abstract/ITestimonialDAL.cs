@@ -9,5 +9,6 @@ namespace Proman.DataAccessLayer.Abstract
         void ChangeHomeStatus(string id);
         List<Testimonial> GetLast3ActiveTestimonials();
         List<Testimonial> GetActiveTestimonials();
+        Testimonial GetTestimonialByID(string id);
     }
 }
