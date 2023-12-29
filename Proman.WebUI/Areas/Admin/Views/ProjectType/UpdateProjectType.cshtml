@@ -1,0 +1,28 @@
+﻿@model UpdateProductTypeDTO
+
+@{
+    ViewData["Title"] = "UpdateProjectType";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Kategori Bilgisi Güncelleme</h1>
+<br />
+<form method="post">
+    <label>ID</label>
+    <input type="text" asp-for="ID" disabled class="form-control" />
+    <br />
+    <label>Kategori Adı</label>
+    <input type="text" asp-for="ProjectTypeName" class="form-control" id="floatingInput" placeholder="Kategori Adı..." required />
+    <br />
+    <label>Açıklama</label>
+    <textarea asp-for="ProjectTypeDescription" rows="5" class="form-control" placeholder="Açıklama..." required></textarea>
+    <br />
+    <input id="IsHome" asp-for="IsHome" type="checkbox" />
+    <label for="IsHome">Ana Sayfa</label>
+    <br />
+    <input id="Status" asp-for="Status" type="checkbox" />
+    <label for="Status">Durum</label>
+    <br />
+    <br />
+    <button class="btn btn-success"><i class="fas fa-save"></i> Kategori Güncelle</button>
+</form>

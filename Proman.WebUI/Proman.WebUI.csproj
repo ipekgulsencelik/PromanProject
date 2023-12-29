@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Proman.BusinessLayer\Proman.BusinessLayer.csproj" />
     <ProjectReference Include="..\Proman.DataAccessLayer\Proman.DataAccessLayer.csproj" />
     <ProjectReference Include="..\Proman.DTO\Proman.DTO.csproj" />
   </ItemGroup>
@@ -26,10 +27,16 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="DTOs\AboutDTOs\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
   </ItemGroup>
 

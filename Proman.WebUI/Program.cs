@@ -1,8 +1,8 @@
+using FluentValidation;
 using Microsoft.Extensions.Options;
-using Proman.DataAccessLayer.Abstract;
-using Proman.DataAccessLayer.Concrete;
 using Proman.DataAccessLayer.Settings.Abstract;
 using Proman.DataAccessLayer.Settings.Concrete;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,10 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
     return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
 });
 
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddControllersWithViews();
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
 
 builder.Services.AddHttpClient();
 

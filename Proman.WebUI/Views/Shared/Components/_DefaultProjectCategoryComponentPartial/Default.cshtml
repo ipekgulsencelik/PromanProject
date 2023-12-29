@@ -1,0 +1,9 @@
+﻿@model List<ResultProjectTypeDTO>
+
+<div class="col-lg-6 text-lg-end">
+    <ul class="list-inline mx-n3 mb-0" id="portfolio-flters">
+        <li class="mx-3 active" data-filter="*">All Projects</li>
+        <li class="mx-3" data-filter=".first">@Model[0].ProjectTypeName</li>
+        <li class="mx-3" data-filter=".second">@Model[1].ProjectTypeName</li>
+    </ul>
+</div>

@@ -4,6 +4,8 @@ using Proman.DTO.DTOs.EducationDTOs;
 using Proman.DTO.DTOs.ExperienceDTOs;
 using Proman.DTO.DTOs.MapDTOs;
 using Proman.DTO.DTOs.MessageDTOs;
+using Proman.DTO.DTOs.ProfileDTOs;
+using Proman.DTO.DTOs.ProjectTypeDTOs;
 using Proman.DTO.DTOs.ServiceDTOs;
 using Proman.DTO.DTOs.SkillDTOs;
 using Proman.DTO.DTOs.SocialMediaDTOs;
@@ -31,6 +33,12 @@ namespace Proman.WebAPI.Mappings
 
             CreateMap<CreateMessageDTO, Message>().ReverseMap();
             CreateMap<UpdateMessageDTO, Message>().ReverseMap();
+
+            CreateMap<CreateProfileDTO, MyProfile>().ReverseMap();
+            CreateMap<UpdateProfileDTO, MyProfile>().ReverseMap();
+
+            CreateMap<CreateProjectTypeDTO, ProjectType>().ReverseMap();
+            CreateMap<UpdateProjectTypeDTO, ProjectType>().ReverseMap();
 
             CreateMap<CreateServiceDTO, Service>().ReverseMap();
             CreateMap<UpdateServiceDTO, Service>().ReverseMap();
